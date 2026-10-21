@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Amber Rounded Container -->
+  <rect width="32" height="32" rx="7.5" fill="#f59e0b" />
+
+  <!-- Black Film Strip & Play Icon (Centered) -->
+  <svg x="5.5" y="5.5" width="21" height="21" viewBox="0 0 61 61">
+    <path
+      fill="#09090b"
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M 0 6 A 6 6 0 0 1 6 0 H 7 V 8 H 15 V 0 H 46 V 8 H 54 V 0 H 55 A 6 6 0 0 1 61 6 V 55 A 6 6 0 0 1 55 61 H 54 V 53 H 46 V 61 H 15 V 53 H 7 V 61 H 6 A 6 6 0 0 1 0 55 Z M 7 15 h 8 v 12 H 7 Z M 7 34 h 8 v 12 H 7 Z M 46 15 h 8 v 12 H 46 Z M 46 34 h 8 v 12 H 46 Z M 22 19 L 39 30 L 22 41 Z"
+    />
+  </svg>
+</svg>

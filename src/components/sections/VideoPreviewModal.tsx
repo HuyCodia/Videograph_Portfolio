@@ -1,0 +1,103 @@
+import type { Project } from '@/types/project'
+import { Modal } from '@/components/ui/Modal'
+import { Play, ArrowUpRight } from 'lucide-react'
+
+interface VideoPreviewModalProps {
+  project: Project | null
+  onClose: () => void
+}
+
+export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) {
+  const isVertical =
+    project?.category === 'Football Edits' || project?.category === 'Short-Form Content'
+
+  return (
+    <Modal
+      isOpen={Boolean(project)}
+      onClose={onClose}
+      title={project?.title}
+      subtitle={
+        project
+          ? `${project.client} • ${project.category} (${project.year})${
+              project.views ? ` • 👁 ${project.views} Views` : ''
+            }`
+          : undefined
+      }
+    >
+      {project && (
+        <div className="flex flex-col">
+          {/* Video Container */}
+          <div
+            className={`${
+              isVertical ? 'aspect-[9/16] max-h-[70vh] w-auto mx-auto' : 'aspect-video w-full'
+            } bg-black relative flex items-center justify-center overflow-hidden`}
+          >
+            {project.videoUrl ? (
+              <video
+                src={project.videoUrl}
+                controls
+                autoPlay
+                className="h-full w-full object-contain bg-black"
+                poster={project.thumbnail}
+              >
+                Dein Browser unterstützt das Video-Format nicht.
+              </video>
+            ) : (
+              <>
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="h-full w-full object-cover opacity-60"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/40">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-500 text-black mb-3 shadow-lg">
+                    <Play className="h-7 w-7 fill-current translate-x-0.5" />
+                  </div>
+                  <p className="text-sm font-semibold text-white">Video Vorschau</p>
+                  <p className="text-xs text-zinc-300 mt-1 max-w-md leading-relaxed">
+                    Lege dein Video in den Ordner <code className="text-amber-400 font-mono bg-zinc-900 px-1.5 py-0.5 rounded">public/videos/</code> und hinterlege den Pfad (z. B. <code className="text-amber-400 font-mono bg-zinc-900 px-1.5 py-0.5 rounded">/videos/mein-video.mp4</code>).
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Description & Technical Specs */}
+          <div className="p-6 bg-zinc-950 border-t border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex-1">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1">
+                Über die Produktion
+              </h4>
+              {project.description && (
+                <p className="text-xs text-zinc-300 leading-relaxed">{project.description}</p>
+              )}
+            </div>
+
+            {project.externalUrl && (
+              <a
+                href={project.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center shrink-0 rounded-full bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 text-xs font-bold transition-all shadow-md shadow-amber-500/20"
+              >
+                <span>
+                  {project.platform
+                    ? `Watch on ${
+                        project.platform === 'Reel'
+                          ? 'Instagram'
+                          : project.platform === 'Shorts'
+                            ? 'YouTube'
+                            : project.platform
+                      }`
+                    : 'Watch Original'}
+                </span>
+                <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+    </Modal>
+  )
+}
+
