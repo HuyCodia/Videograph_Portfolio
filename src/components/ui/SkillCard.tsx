@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type { SkillItem } from '@/types/skill'
 
 interface SkillCardProps {
@@ -12,15 +13,74 @@ interface SkillCardProps {
  * so that each incoming card cleanly glides over and covers previous cards,
  * maintaining an authentic physical card deck stacking interaction.
  *
- * All cards standardize on a uniform 520px desktop height with identical,
+ * Cards enter from the bottom scaled down by 10% (scale: 0.9) and smoothly scale up
+ * to their full 1.0 size while preserving their exact aspect ratio as they reach
+ * their locked sticky end position.
+ *
+ * All cards standardize on a uniform 480px desktop height with identical,
  * symmetrical 26px padding around the artwork.
  */
 export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const cardInnerRef = useRef<HTMLDivElement>(null)
+
   const formattedIndex = String(index + 1).padStart(2, '0')
   const formattedTotal = String(totalCards).padStart(2, '0')
 
+  useEffect(() => {
+    const container = containerRef.current
+    const cardInner = cardInnerRef.current
+    if (!container || !cardInner) return
+
+    let rafId: number | null = null
+
+    const updateScale = () => {
+      const rect = container.getBoundingClientRect()
+      const stickyTop = parseFloat(window.getComputedStyle(container).top) || 0
+      const currentTop = rect.top
+
+      // Once the card has reached or passed its sticky end position, lock strictly at 1.0
+      if (currentTop <= stickyTop + 1) {
+        cardInner.style.transform = 'scale(1)'
+        return
+      }
+
+      // Card is scrolling up from below towards its sticky end position
+      const travelDistance = Math.max(100, window.innerHeight - stickyTop)
+      const remainingDistance = currentTop - stickyTop
+      const progress = Math.max(0, Math.min(1, 1 - remainingDistance / travelDistance))
+      const scale = 0.9 + 0.1 * progress
+
+      cardInner.style.transform = `scale(${scale.toFixed(4)})`
+    }
+
+    const onScrollOrResize = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          updateScale()
+          rafId = null
+        })
+      }
+    }
+
+    // Initialize scale on mount
+    updateScale()
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize, { passive: true })
+
+    return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+      window.removeEventListener('scroll', onScrollOrResize)
+      window.removeEventListener('resize', onScrollOrResize)
+    }
+  }, [])
+
   return (
     <div
+      ref={containerRef}
       className="sticky mb-[10vh] sm:mb-[12vh]"
       style={{
         // Pins the card in a balanced center position with safe clearance below the floating navbar
@@ -29,8 +89,16 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
       }}
     >
       {/* Solid background and deep shadow ensure cards behind are completely covered with no bleed-through.
-          Standardized to a uniform 480px height on desktop for a balanced, slightly sleeker card profile. */}
-      <div className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-6 shadow-2xl shadow-black/95 min-h-[480px] lg:h-[480px]">
+          Standardized to a uniform 480px height on desktop for a balanced, slightly sleeker card profile.
+          willChange transform ensures buttery smooth 60fps/120fps GPU compositing. */}
+      <div
+        ref={cardInnerRef}
+        style={{
+          transformOrigin: 'center center',
+          willChange: 'transform',
+        }}
+        className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-6 shadow-2xl shadow-black/95 min-h-[480px] lg:h-[480px]"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 h-full items-stretch">
           {/* Left Column: Skill Information */}
           <div className="lg:col-span-6 flex flex-col items-start justify-center p-3 sm:p-6 lg:p-8">
