@@ -14,9 +14,9 @@ import { SkillCard } from '@/components/ui/SkillCard'
  */
 export function SkillsSection() {
   return (
-    <section id="skills" className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-28 border-t border-zinc-900">
+    <section id="skills" className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-20 sm:pt-24 pb-28 border-t border-zinc-900">
       {/* Section Header */}
-      <div className="mb-16 sm:mb-20">
+      <div className="mb-8 sm:mb-10">
         <SectionHeader
           eyebrow="Expertise"
           title="Skills & Craft"

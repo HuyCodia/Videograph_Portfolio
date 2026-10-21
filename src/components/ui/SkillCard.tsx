@@ -97,7 +97,7 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
           transformOrigin: 'center center',
           willChange: 'transform',
         }}
-        className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-6 shadow-2xl shadow-black/95 min-h-[480px] lg:h-[480px]"
+        className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-6 shadow-2xl shadow-black/95 min-h-[520px] lg:h-[520px]"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 h-full items-stretch">
           {/* Left Column: Skill Information */}
