@@ -25,15 +25,16 @@ function resolvePlatformName(platform?: SocialPlatform): string {
 function PlatformBadge({ platform }: { readonly platform: string }) {
   return (
     <span className="inline-flex items-center gap-2 rounded-full bg-black/75 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-white tracking-wide border border-white/15 shadow-lg select-none">
-      <span className="relative flex h-2 w-2 min-h-[8px] min-w-[8px] shrink-0 items-center justify-center aspect-square">
+      <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
         <span className="radar-circle radar-circle-1" aria-hidden="true" />
         <span className="radar-circle radar-circle-2" aria-hidden="true" />
         <span
-          className="relative z-10 block h-2 w-2 min-h-[8px] min-w-[8px] shrink-0 rounded-full bg-amber-500 aspect-square"
+          className="relative z-10 block h-2 w-2 shrink-0 rounded-full bg-amber-500"
           aria-hidden="true"
         />
       </span>
-      <span className="leading-none" style={{ position: 'relative', top: '-0.5px' }}>
+
+      <span className="leading-none">
         {platform}
       </span>
     </span>
