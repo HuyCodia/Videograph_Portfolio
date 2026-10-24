@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { SkillItem } from '@/types/skill'
+import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 
 interface SkillCardProps {
   readonly skill: SkillItem
@@ -26,6 +27,7 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
 
   const formattedIndex = String(index + 1).padStart(2, '0')
   const formattedTotal = String(totalCards).padStart(2, '0')
+  const hasComparison = skill.id === 'color-grading' || Boolean(skill.beforeImage && skill.afterImage)
 
   useEffect(() => {
     const container = containerRef.current
@@ -97,11 +99,11 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
           transformOrigin: 'center center',
           willChange: 'transform',
         }}
-        className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-6 shadow-2xl shadow-black/95 min-h-[520px] lg:h-[520px]"
+        className="rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-950 p-4 sm:p-5 lg:p-5 shadow-2xl shadow-black/95 min-h-[490px] lg:h-[490px]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 h-full items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.07fr_1fr] gap-8 lg:gap-10 h-full items-stretch">
           {/* Left Column: Skill Information */}
-          <div className="lg:col-span-6 flex flex-col items-start justify-center p-3 sm:p-6 lg:p-8">
+          <div className="flex flex-col items-start justify-center p-3 sm:p-6 lg:py-8 lg:pr-6 lg:pl-14">
             {/* Sleek, Minimalist Numbering Index */}
             <div className="flex items-center gap-1.5 text-xs font-mono tracking-wider mb-4 select-none">
               <span className="text-amber-400 font-semibold">{formattedIndex}</span>
@@ -113,7 +115,7 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
               {skill.title}
             </h3>
 
-            <p className="text-sm sm:text-base lg:text-lg text-zinc-400 font-normal leading-relaxed max-w-xl">
+            <p className="text-sm sm:text-base lg:text-lg text-zinc-400 font-normal leading-relaxed max-w-[410px]">
               {skill.description}
             </p>
 
@@ -128,14 +130,22 @@ export function SkillCard({ skill, index, totalCards }: SkillCardProps) {
           </div>
 
           {/* Right Column: Visual Artwork - Standardized height with uniform 26px margins */}
-          <div className="lg:col-span-6 flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full">
             <div className="relative w-full h-[280px] sm:h-[360px] lg:h-full overflow-hidden rounded-xl sm:rounded-2xl border border-zinc-800/80 shadow-2xl bg-zinc-900">
-              <img
-                src={skill.image}
-                alt={skill.imageAlt}
-                className="absolute inset-0 h-full w-full object-cover rounded-xl sm:rounded-2xl"
-                loading="eager"
-              />
+              {hasComparison ? (
+                <BeforeAfterSlider
+                  beforeImage={skill.beforeImage}
+                  afterImage={skill.afterImage || skill.image}
+                  alt={skill.imageAlt}
+                />
+              ) : (
+                <img
+                  src={skill.image}
+                  alt={skill.imageAlt}
+                  className="absolute inset-0 h-full w-full object-cover rounded-xl sm:rounded-2xl"
+                  loading="eager"
+                />
+              )}
             </div>
           </div>
         </div>

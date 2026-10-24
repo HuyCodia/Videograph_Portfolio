@@ -15,7 +15,9 @@ export const SKILLS_DATA: readonly SkillItem[] = [
     description:
       'High-end cinematic color grading in DaVinci Resolve. Custom film emulations, precise skin tone management, atmospheric lighting contrast, and signature color palettes engineered for music videos, commercials, and cinematic productions.',
     image: '/skills/color-grading.jpg',
-    imageAlt: 'Color Grading suite and reference monitors showcase',
+    imageAlt: 'Color Grading Vorher- und Nachher-Vergleich in DaVinci Resolve',
+    beforeImage: '/skills/color-grading.jpg',
+    afterImage: '/skills/color-grading.jpg',
   },
   {
     id: 'motion-graphics',

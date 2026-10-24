@@ -6,5 +6,7 @@ export interface SkillItem {
   readonly ctaHref?: string
   readonly image: string
   readonly imageAlt: string
+  readonly beforeImage?: string
+  readonly afterImage?: string
 }
 
