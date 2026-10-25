@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SITE_CONFIG } from '@/constants/siteConfig'
 import { ImageLightbox } from '@/components/ui/ImageLightbox'
-import { GraduationCap, Clapperboard } from 'lucide-react'
+import { GraduationCap, Clapperboard, ArrowUpRight } from 'lucide-react'
+import { TikTokIcon } from '@/components/icons/SocialIcons'
 
 export function AboutSection() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
-  const portraitSrc = '/pictures/portrait.jpg'
+  const portraitSrc = '/pictures/about-portrait.png'
   const portraitAlt = `${SITE_CONFIG.creator.name} Portrait`
 
   return (
@@ -50,9 +51,31 @@ export function AboutSection() {
               I'm a video creator and computer science student with a passion for visual storytelling and creative editing.
             </p>
 
-            <p>
-              From football edits to color grading and motion graphics, I enjoy experimenting with new ideas and bringing visuals to life. I also manage my brother's football content channel, creating and editing videos for his social media.
-            </p>
+            <div>
+              <p>
+                From football edits to color grading and motion graphics, I enjoy experimenting with new ideas and bringing visuals to life. I also manage my brother's football TikTok channel, creating and editing videos for his social media.
+              </p>
+
+              <a
+                href="https://www.tiktok.com/@haodg10?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-3.5 mt-3.5 select-none"
+              >
+                <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl border border-zinc-800 bg-zinc-900 text-zinc-300 transition-all duration-300 group-hover:border-amber-400 group-hover:text-amber-400 group-hover:scale-105">
+                  <TikTokIcon className="h-5 w-5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-sm sm:text-base font-bold text-white leading-tight">
+                    Football Content on TikTok
+                  </span>
+                  <span className="text-xs sm:text-sm font-medium text-amber-500 group-hover:text-amber-400 transition-colors flex items-center gap-1 mt-0.5">
+                    View TikTok Channel
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+              </a>
+            </div>
 
             <p>
               My approach combines clean visuals, intentional pacing, and platform-native editing styles to make every video feel polished, engaging, and built to perform.
