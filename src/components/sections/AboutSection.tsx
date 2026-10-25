@@ -40,7 +40,7 @@ export function AboutSection() {
         {/* Right Column: Bio & Story */}
         <div className="lg:col-span-7 flex flex-col justify-center">
           <SectionHeader
-            eyebrow="About Me"
+            eyebrow="ABOUT ME"
             title="Hey, I'm Huy."
             className="mb-7"
           />
@@ -51,10 +51,10 @@ export function AboutSection() {
             </p>
 
             <p>
-              From football edits to color grading and motion graphics, I enjoy experimenting with new ideas and bringing visuals to life.
+              From football edits to color grading and motion graphics, I enjoy experimenting with new ideas and bringing visuals to life. I also manage my brother's football content channel, creating and editing videos for his social media.
             </p>
 
-            <p className="text-zinc-400 text-sm sm:text-base">
+            <p>
               My approach combines clean visuals, intentional pacing, and platform-native editing styles to make every video feel polished, engaging, and built to perform.
             </p>
           </div>
@@ -63,14 +63,14 @@ export function AboutSection() {
           <div className="mt-7 pt-6 border-t border-zinc-800/80 space-y-3.5 select-none">
             <div className="flex items-center gap-3">
               <GraduationCap className="h-5 w-5 text-amber-500 shrink-0" aria-hidden="true" />
-              <span className="text-sm sm:text-base font-medium text-zinc-200">
+              <span className="text-sm sm:text-base font-semibold text-zinc-200">
                 Computer Science Student
               </span>
             </div>
 
             <div className="flex items-center gap-3">
               <Clapperboard className="h-5 w-5 text-amber-500 shrink-0" aria-hidden="true" />
-              <span className="text-sm sm:text-base font-medium text-zinc-200">
+              <span className="text-sm sm:text-base font-semibold text-zinc-200">
                 Video Editing & Creative Media
               </span>
             </div>
