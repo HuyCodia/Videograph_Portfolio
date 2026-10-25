@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
     shortBio:
       'I create dynamic video edits, cinematic visuals, and impactful social media content.',
     status: 'VIDEO EDITOR • CREATIVE',
-    email: 'huyd903@gmail.com',
+    email: 'huy.dang.video@gmail.com',
   },
   navigation: [
     { label: 'Projects', href: '#projects' },

@@ -2,23 +2,6 @@ import { useState, useEffect } from "react";
 import { SITE_CONFIG } from "@/constants/siteConfig";
 import { Menu, X } from "lucide-react";
 
-function FilmStripPlayIcon({ className = "h-5 w-5" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 61 61"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M 0 6 A 6 6 0 0 1 6 0 H 7 V 8 H 15 V 0 H 46 V 8 H 54 V 0 H 55 A 6 6 0 0 1 61 6 V 55 A 6 6 0 0 1 55 61 H 54 V 53 H 46 V 61 H 15 V 53 H 7 V 61 H 6 A 6 6 0 0 1 0 55 Z M 7 15 h 8 v 12 H 7 Z M 7 34 h 8 v 12 H 7 Z M 46 15 h 8 v 12 H 46 Z M 46 34 h 8 v 12 H 46 Z M 22 19 L 39 30 L 22 41 Z"
-      />
-    </svg>
-  );
-}
-
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -62,6 +45,40 @@ export function Navbar() {
     };
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return;
+
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+      if (targetId === 'contact') {
+        // Scroll smoothly so the top divider line sits just outside the viewport (+ 2px offset)
+        const targetTop = targetSection.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.ceil(targetTop) + 2,
+          behavior: 'smooth',
+        });
+      } else if (targetId === 'about') {
+        const card =
+          targetSection.querySelector<HTMLElement>(':scope > div') || targetSection;
+        card.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest',
+        });
+      } else {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest',
+        });
+      }
+      window.history.pushState(null, '', href);
+    }
+  };
+
   return (
     <header
       className={`fixed top-5 left-0 right-0 z-50 flex flex-col items-center px-4 pointer-events-none will-change-transform ${
@@ -73,11 +90,14 @@ export function Navbar() {
       {/* Floating Pill Navbar */}
       <nav className="pointer-events-auto flex items-center justify-between gap-5 sm:gap-6 md:gap-8 lg:gap-9 rounded-full border border-zinc-800/80 bg-zinc-950/90 backdrop-blur-2xl pl-3 pr-1.5 py-1.5 sm:pl-3.5 sm:pr-2 sm:py-2 shadow-2xl shadow-black/80 transition-all duration-300">
         {/* Left: Brand Icon + HUY DANG */}
-        <a href="#" className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-amber-500 text-black shadow-md shadow-amber-500/25">
-            <FilmStripPlayIcon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
-          </div>
-          <span className="text-lg sm:text-xl font-bold text-white tracking-[-0.02em] uppercase">
+        <a href="#" className="group/brand flex items-center gap-2.5 sm:gap-3 select-none">
+          <img
+            src="/logo-hd-transparent.png?v=5"
+            alt="HD Logo"
+            className="h-7 w-auto sm:h-8 object-contain"
+            draggable={false}
+          />
+          <span className="text-lg sm:text-xl font-bold text-white tracking-[-0.02em] uppercase transition-colors group-hover/brand:text-amber-400">
             {SITE_CONFIG.creator.name}
           </span>
         </a>
@@ -88,6 +108,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="group py-1 inline-block cursor-pointer select-none"
             >
               <div className="relative overflow-hidden">
@@ -116,6 +137,7 @@ export function Navbar() {
 
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="relative inline-flex items-center justify-center rounded-full bg-amber-500 px-6 py-2.5 sm:px-7 sm:py-3 text-sm sm:text-base font-bold text-black shadow-md shadow-amber-500/25 cursor-pointer select-none"
             >
               <div className="relative overflow-hidden">
@@ -155,7 +177,10 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                handleNavClick(e, item.href);
+              }}
               className="group py-2 inline-flex justify-center items-center cursor-pointer text-base font-semibold"
             >
               <div className="relative overflow-hidden">
@@ -178,7 +203,10 @@ export function Navbar() {
             />
             <a
               href="#contact"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                handleNavClick(e, '#contact');
+              }}
               className="relative inline-flex items-center justify-center rounded-full bg-amber-500 py-2.5 px-6 text-sm font-bold text-black shadow-md shadow-amber-500/25 cursor-pointer select-none w-full"
             >
               <div className="relative overflow-hidden">

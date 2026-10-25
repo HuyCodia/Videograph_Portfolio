@@ -1,32 +1,39 @@
+import { useState } from 'react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { SITE_CONFIG } from '@/constants/siteConfig'
-import { Camera } from 'lucide-react'
+import { ImageLightbox } from '@/components/ui/ImageLightbox'
+import { GraduationCap, Clapperboard } from 'lucide-react'
 
 export function AboutSection() {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const portraitSrc = '/pictures/portrait.jpg'
+  const portraitAlt = `${SITE_CONFIG.creator.name} Portrait`
+
   return (
     <section id="about" className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-28 border-t border-zinc-900">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Left Column: Portrait / On-Set Image */}
         <div className="lg:col-span-5 relative">
-          <div className="relative rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => setIsLightboxOpen(true)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                setIsLightboxOpen(true)
+              }
+            }}
+            aria-label={`${portraitAlt} vergrößern`}
+            className="group relative rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-500/80 transition-all duration-300 hover:border-zinc-700 hover:shadow-amber-500/10 active:scale-[0.99]"
+          >
             <img
-              src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80"
-              alt={`${SITE_CONFIG.creator.name}`}
-              className="w-full aspect-[4/5] object-cover filter contrast-105"
+              src={portraitSrc}
+              alt={portraitAlt}
+              className="w-full aspect-[4/5] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.05] will-change-transform"
+              style={{ objectPosition: 'center 45%' }}
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 flex items-center justify-between">
-              <div>
-                <span className="text-xs font-semibold text-amber-400 uppercase tracking-widest block">
-                  {SITE_CONFIG.creator.name}
-                </span>
-                <span className="text-sm font-medium text-white">{SITE_CONFIG.creator.role}</span>
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/10 text-amber-400">
-                <Camera className="h-5 w-5" />
-              </div>
-            </div>
           </div>
         </div>
 
@@ -34,29 +41,49 @@ export function AboutSection() {
         <div className="lg:col-span-7 flex flex-col justify-center">
           <SectionHeader
             eyebrow="About Me"
-            title="Where creativity meets technology."
-            className="mb-8"
+            title="Hey, I'm Huy."
+            className="mb-7"
           />
 
-          <div className="space-y-5">
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed font-normal">
-              I'm an aspiring video editor and computer science student at Leibniz University Hannover, passionate about visual storytelling, creative editing, and digital media.
+          <div className="space-y-4 text-base sm:text-lg text-zinc-300 leading-relaxed font-normal">
+            <p>
+              I'm a video creator and computer science student with a passion for visual storytelling and creative editing.
             </p>
 
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              My background in computer science shapes the way I approach creative projects — with curiosity, attention to detail, and a constant drive to learn and experiment.
+            <p>
+              From football edits to color grading and motion graphics, I enjoy experimenting with new ideas and bringing visuals to life.
             </p>
 
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              From football edits and short-form content to color grading and motion graphics, I enjoy exploring different styles and turning ideas into engaging visual experiences.
+            <p className="text-zinc-400 text-sm sm:text-base">
+              My approach combines clean visuals, intentional pacing, and platform-native editing styles to make every video feel polished, engaging, and built to perform.
             </p>
+          </div>
 
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
-              I'm always looking for new ways to combine creativity and technology, develop my skills, and bring fresh ideas to life.
-            </p>
+          {/* Quick Identity Highlights */}
+          <div className="mt-7 pt-6 border-t border-zinc-800/80 space-y-3.5 select-none">
+            <div className="flex items-center gap-3">
+              <GraduationCap className="h-5 w-5 text-amber-500 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base font-medium text-zinc-200">
+                Computer Science Student
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Clapperboard className="h-5 w-5 text-amber-500 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base font-medium text-zinc-200">
+                Video Editing & Creative Media
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      <ImageLightbox
+        isOpen={isLightboxOpen}
+        onClose={() => setIsLightboxOpen(false)}
+        src={portraitSrc}
+        alt={portraitAlt}
+      />
     </section>
   )
 }
