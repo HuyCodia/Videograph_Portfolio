@@ -7,9 +7,37 @@ interface VideoPreviewModalProps {
   onClose: () => void
 }
 
+/**
+ * Resolves an embeddable URL for YouTube (including Shorts) or explicit embed URLs.
+ */
+function resolveEmbedUrl(project: Project): string | null {
+  if (project.videoEmbedUrl) {
+    return project.videoEmbedUrl
+  }
+
+  const urlToCheck = project.videoUrl
+  if (!urlToCheck) return null
+
+  // YouTube Shorts: youtube.com/shorts/<id>
+  const shortMatch = urlToCheck.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/)
+  if (shortMatch) {
+    return `https://www.youtube.com/embed/${shortMatch[1]}?autoplay=1&rel=0`
+  }
+
+  // Standard YouTube: youtube.com/watch?v=<id> or youtu.be/<id>
+  const ytMatch = urlToCheck.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/)
+  if (ytMatch) {
+    return `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`
+  }
+
+  return null
+}
+
 export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) {
   const isVertical =
     project?.category === 'Football Edits' || project?.category === 'Short-Form Content'
+
+  const embedUrl = project ? resolveEmbedUrl(project) : null
 
   return (
     <Modal
@@ -32,7 +60,15 @@ export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) 
               isVertical ? 'aspect-[9/16] max-h-[70vh] w-auto mx-auto' : 'aspect-video w-full'
             } bg-black relative flex items-center justify-center overflow-hidden`}
           >
-            {project.videoUrl ? (
+            {embedUrl ? (
+              <iframe
+                src={embedUrl}
+                title={project.title}
+                className="h-full w-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            ) : project.videoUrl ? (
               <video
                 src={project.videoUrl}
                 controls

@@ -92,7 +92,7 @@ export function Navbar() {
         {/* Left: Brand Icon + HUY DANG */}
         <a href="#" className="group/brand flex items-center gap-2.5 sm:gap-3 select-none">
           <img
-            src="/logo-hd-transparent.png?v=5"
+            src="/logo-navbar.png?v=6"
             alt="HD Logo"
             className="h-7 w-auto sm:h-8 object-contain"
             draggable={false}
