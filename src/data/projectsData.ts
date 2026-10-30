@@ -92,7 +92,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     id: "echoes-of-the-north",
     title: "Hausmessung mit Ju",
     client: "Nordic Tourism & Gear",
-    category: "Cinematic Videos",
+    category: "Comedy & Entertainment",
     platform: "YouTube",
     year: "2025",
     duration: "01:45",
