@@ -1,3 +1,4 @@
+import { isVerticalProject } from '@/types/project'
 import type { Project } from '@/types/project'
 import { Modal } from '@/components/ui/Modal'
 import { Play, ArrowUpRight } from 'lucide-react'
@@ -46,8 +47,7 @@ function resolveEmbedUrl(project: Project): string | null {
 }
 
 export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) {
-  const isVertical =
-    project?.category === 'Football Edits' || project?.category === 'Short-Form Content'
+  const isVertical = isVerticalProject(project)
 
   const embedUrl = project ? resolveEmbedUrl(project) : null
 

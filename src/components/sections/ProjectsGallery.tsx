@@ -1,3 +1,4 @@
+import { isVerticalProject } from '@/types/project'
 import type { Project } from '@/types/project'
 import { PROJECTS_DATA } from '@/data/projectsData'
 import { useProjectFilter } from '@/hooks/useProjectFilter'
@@ -12,17 +13,16 @@ export function ProjectsGallery({ onSelectProject }: ProjectsGalleryProps) {
   const { selectedCategory, setSelectedCategory, categories, filteredProjects } =
     useProjectFilter(PROJECTS_DATA)
 
+  // Mixed categories (All, Comedy & Entertainment) support both 9:16 and 16:9 cards seamlessly in a 12-col grid
+  const isMixedCategory = selectedCategory === 'All' || selectedCategory === 'Comedy & Entertainment'
+
   // Vertical categories have max 4 in a row (lg:grid-cols-4)
-  // Horizontal categories (AI Video Creation, Cinematic Videos, VFX & Experiments) have max 3 in a row (lg:grid-cols-3)
-  // The 'All' category uses a 12-column grid so vertical cards take 3/12 (max 4 per row)
-  // and horizontal cards take 4/12 (max 3 per row, consistent with Cinematic Videos).
+  // Horizontal categories have max 3 in a row (lg:grid-cols-3)
   const isVerticalCategory =
     selectedCategory === 'Football Edits' ||
     selectedCategory === 'Short-Form Content'
 
-  const isAllCategory = selectedCategory === 'All'
-
-  const gridContainerClass = isAllCategory
+  const gridContainerClass = isMixedCategory
     ? 'grid-cols-1 sm:grid-cols-6 lg:grid-cols-12'
     : isVerticalCategory
       ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
@@ -68,11 +68,9 @@ export function ProjectsGallery({ onSelectProject }: ProjectsGalleryProps) {
       {/* Grid of Projects */}
       <div className={`grid gap-6 items-start ${gridContainerClass}`}>
         {filteredProjects.map((project) => {
-          const isVertical =
-            project.category === 'Football Edits' ||
-            project.category === 'Short-Form Content'
+          const isVertical = isVerticalProject(project)
 
-          const colSpanClass = isAllCategory
+          const colSpanClass = isMixedCategory
             ? isVertical
               ? 'sm:col-span-3 lg:col-span-3'
               : 'sm:col-span-3 lg:col-span-4'

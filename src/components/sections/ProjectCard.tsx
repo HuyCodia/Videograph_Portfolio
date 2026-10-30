@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { isVerticalProject } from '@/types/project'
 import type { Project, SocialPlatform } from '@/types/project'
 import { Play, ArrowUpRight, Smartphone, Monitor, Eye } from 'lucide-react'
 
@@ -79,9 +80,8 @@ function CardPlayOverlay({ isDimmed }: { readonly isDimmed: boolean }) {
 export function ProjectCard({ project, onSelect, className }: ProjectCardProps) {
   const [isLinkHovered, setIsLinkHovered] = useState(false)
 
-  // Vertical format is used strictly for short-form social media edits
-  const isVertical =
-    project.category === 'Football Edits' || project.category === 'Short-Form Content'
+  // Dynamic aspect ratio calculation supporting 9:16 vertical and 16:9 horizontal
+  const isVertical = isVerticalProject(project)
 
   const badgeLabel = resolveBadgeLabel(project.platform, isVertical)
   const actionPlatform = resolveActionPlatform(project.platform)
