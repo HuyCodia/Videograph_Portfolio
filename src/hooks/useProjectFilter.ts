@@ -10,6 +10,7 @@ export function useProjectFilter(projects: readonly Project[]) {
     'All',
     'Football Edits',
     'Short-Form Content',
+    'Comedy & Entertainment',
     'AI Video Creation',
     'Cinematic Videos',
     'VFX & Experiments',
