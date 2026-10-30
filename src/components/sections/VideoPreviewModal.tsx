@@ -8,14 +8,14 @@ interface VideoPreviewModalProps {
 }
 
 /**
- * Resolves an embeddable URL for YouTube (including Shorts) or explicit embed URLs.
+ * Resolves an embeddable URL for YouTube (including Shorts), Instagram Reels, or explicit embed URLs.
  */
 function resolveEmbedUrl(project: Project): string | null {
   if (project.videoEmbedUrl) {
     return project.videoEmbedUrl
   }
 
-  const urlToCheck = project.videoUrl
+  const urlToCheck = project.videoUrl || project.externalUrl
   if (!urlToCheck) return null
 
   // YouTube Shorts: youtube.com/shorts/<id>
@@ -28,6 +28,18 @@ function resolveEmbedUrl(project: Project): string | null {
   const ytMatch = urlToCheck.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/)
   if (ytMatch) {
     return `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1&rel=0`
+  }
+
+  // Instagram Reel / Post: instagram.com/reel/<id> or instagram.com/p/<id>
+  const instaMatch = urlToCheck.match(/instagram\.com\/(?:reel|p)\/([a-zA-Z0-9_-]+)/)
+  if (instaMatch) {
+    return `https://www.instagram.com/reel/${instaMatch[1]}/embed/`
+  }
+
+  // TikTok Video: tiktok.com/@user/video/<id> or tiktok.com/v/<id>
+  const tiktokMatch = urlToCheck.match(/tiktok\.com\/(?:@[^/]+\/video|v)\/([0-9]+)/)
+  if (tiktokMatch) {
+    return `https://www.tiktok.com/player/v1/${tiktokMatch[1]}`
   }
 
   return null
@@ -57,7 +69,7 @@ export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) 
           {/* Video Container */}
           <div
             className={`${
-              isVertical ? 'aspect-[9/16] max-h-[70vh] w-auto mx-auto' : 'aspect-video w-full'
+              isVertical ? 'aspect-[9/16] max-h-[72vh] w-full max-w-[400px] mx-auto' : 'aspect-video w-full'
             } bg-black relative flex items-center justify-center overflow-hidden`}
           >
             {embedUrl ? (
@@ -67,6 +79,7 @@ export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) 
                 className="h-full w-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
+                scrolling="no"
               />
             ) : project.videoUrl ? (
               <video

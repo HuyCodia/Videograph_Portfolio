@@ -9,14 +9,24 @@ interface ProjectCardProps {
 }
 
 /**
- * Resolves social platform label, mapping legacy platform identifiers
- * to their current user-facing brand names.
+ * Resolves the badge format label for the top-left pill (e.g. Reel, Shorts, TikTok, YouTube).
  */
-function resolvePlatformName(platform?: SocialPlatform): string {
-  if (!platform) return 'YouTube'
-  if (platform === 'Reel') return 'Instagram'
-  if (platform === 'Shorts') return 'YouTube'
-  return platform
+function resolveBadgeLabel(platform?: SocialPlatform, isVertical?: boolean): string {
+  if (platform === 'TikTok') return 'TikTok'
+  if (platform === 'Instagram' || platform === 'Reel') return 'Reel'
+  if (platform === 'Shorts') return 'Shorts'
+  if (platform === 'YouTube') return isVertical ? 'Shorts' : 'YouTube'
+  return isVertical ? 'Reel' : 'YouTube'
+}
+
+/**
+ * Resolves the target external social platform brand for action links (Watch on ...).
+ */
+function resolveActionPlatform(platform?: SocialPlatform): string {
+  if (platform === 'TikTok') return 'TikTok'
+  if (platform === 'Instagram' || platform === 'Reel') return 'Instagram'
+  if (platform === 'YouTube' || platform === 'Shorts') return 'YouTube'
+  return 'YouTube'
 }
 
 /**
@@ -73,8 +83,9 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
   const isVertical =
     project.category === 'Football Edits' || project.category === 'Short-Form Content'
 
-  const platformName = resolvePlatformName(project.platform)
-  const actionLinkLabel = `Watch on ${platformName}`
+  const badgeLabel = resolveBadgeLabel(project.platform, isVertical)
+  const actionPlatform = resolveActionPlatform(project.platform)
+  const actionLinkLabel = `Watch on ${actionPlatform}`
 
   // --------------------------------------------------------------------------
   // 1. VERTICAL VIDEO CARD (9:16 Aspect Ratio)
@@ -106,7 +117,7 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
 
         {/* Top Badges: Platform on Left & 9:16 Aspect indicator on Right */}
         <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between pointer-events-none">
-          <PlatformBadge platform={platformName} />
+          <PlatformBadge platform={badgeLabel} />
 
           <span className="rounded-full bg-black/65 backdrop-blur-md px-2.5 py-1 text-[11px] font-mono font-medium text-zinc-300 border border-white/10 shadow-md flex items-center gap-1.5 select-none">
             <Smartphone className="h-3 w-3 text-amber-400" />
@@ -205,7 +216,7 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
 
         {/* Top Badges: Platform on Left & Views + 16:9 on Right */}
         <div className="absolute inset-x-0 top-0 p-4 sm:p-5 z-10 flex items-center justify-between pointer-events-none">
-          <PlatformBadge platform={platformName} />
+          <PlatformBadge platform={badgeLabel} />
 
           <div className="flex items-center gap-1.5">
             {project.views && (

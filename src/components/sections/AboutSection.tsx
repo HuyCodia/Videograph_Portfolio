@@ -7,7 +7,7 @@ import { TikTokIcon } from '@/components/icons/SocialIcons'
 
 export function AboutSection() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
-  const portraitSrc = '/pictures/about-portrait.png'
+  const portraitSrc = '/images/about-portrait.png'
   const portraitAlt = `${SITE_CONFIG.creator.name} Portrait`
 
   return (
