@@ -1,10 +1,10 @@
 import { SITE_CONFIG } from '@/constants/siteConfig'
 
 interface HeroSectionProps {
-  onPlayShowreel: () => void
+  videoSrc?: string
 }
 
-export function HeroSection({ onPlayShowreel }: HeroSectionProps) {
+export function HeroSection({ videoSrc }: HeroSectionProps) {
   return (
     <header className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-24 overflow-hidden">
       {/* Ambient background lighting */}
@@ -93,27 +93,27 @@ export function HeroSection({ onPlayShowreel }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: Featured Showreel Card */}
+          {/* Right Column: Featured Showreel Container (Non-clickable, loop video or image fallback) */}
           <div className="lg:col-span-5 flex items-center justify-center lg:justify-end self-center">
-            <div
-              onClick={onPlayShowreel}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  onPlayShowreel()
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label="Play Showreel"
-              className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px] aspect-square rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-900 shadow-2xl shadow-black/80 cursor-default shrink-0 self-center focus:outline-none focus:ring-2 focus:ring-amber-500"
-            >
-              <img
-                src="/hero-card.png"
-                alt="Your Next Showreel - Featured Visual"
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
+            <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[440px] aspect-square rounded-2xl overflow-hidden border border-zinc-800/80 bg-zinc-900 shadow-2xl shadow-black/80 shrink-0 self-center select-none pointer-events-none">
+              {videoSrc ? (
+                <video
+                  src={videoSrc}
+                  poster="/hero-card.png"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <img
+                  src="/hero-card.png"
+                  alt="Featured Showreel Visual"
+                  className="h-full w-full object-cover"
+                  loading="eager"
+                />
+              )}
             </div>
           </div>
         </div>
