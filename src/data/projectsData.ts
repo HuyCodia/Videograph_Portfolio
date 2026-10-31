@@ -44,7 +44,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     id: "el-clasico-thrill",
     title: "Futsal Highlights",
     client: "La Liga / EA Sports FC",
-    category: "Short-Form Content",
+    category: "Football Edits",
     platform: "TikTok",
     views: "1.8M",
     year: "2025",
@@ -120,16 +120,17 @@ export const PROJECTS_DATA: readonly Project[] = [
   // --- Row 3: 4 Vertical Cards (Col 1 to 4) ---
   {
     id: "limitless-grind",
-    title: "Limitless Grind",
+    title: "Photo Colorgrading 2",
     client: "APEX Gym & Performance",
     category: "Short-Form Content",
-    platform: "YouTube",
+    platform: "Instagram",
     views: "1.5M",
     year: "2025",
     duration: "00:28",
-    thumbnail:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-    externalUrl: "https://www.youtube.com",
+    thumbnail: "/images/Standbild_Garten_Fussball.png",
+    videoEmbedUrl: "https://www.instagram.com/reel/CHNo0AwC-t0/embed/",
+    externalUrl:
+      "https://www.instagram.com/reel/CHNo0AwC-t0/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
     description:
       "Hochenergetisches Fitness Reel mit Hard-Cuts, Bass-Pumping Sound-Design und düsterer Cinematic-Ausleuchtung.",
   },
