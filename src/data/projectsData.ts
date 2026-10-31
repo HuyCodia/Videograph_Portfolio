@@ -110,9 +110,9 @@ export const PROJECTS_DATA: readonly Project[] = [
     platform: "YouTube",
     year: "2020",
     duration: "01:45",
-    thumbnail:
-      "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1200&q=80",
-    externalUrl: "https://www.youtube.com",
+    thumbnail: "https://img.youtube.com/vi/wa6TPCOxA3M/hqdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/wa6TPCOxA3M?autoplay=1&rel=0",
+    externalUrl: "https://youtu.be/wa6TPCOxA3M?si=vrLKOMb35NZHLRq9",
     description:
       "Cineastischer Sci-Fi Teaser mit Diffusionsmodellen generiert, durch Runway Gen-3 animiert und mit Dolby 5.1 Sound veredelt.",
   },
