@@ -42,7 +42,7 @@ export const PROJECTS_DATA: readonly Project[] = [
   },
   {
     id: "el-clasico-thrill",
-    title: "Futsal Highlights",
+    title: "Nordfrost-Cup",
     client: "La Liga / EA Sports FC",
     category: "Football Edits",
     platform: "TikTok",
@@ -58,7 +58,7 @@ export const PROJECTS_DATA: readonly Project[] = [
   },
   {
     id: "urban-minimal-drop",
-    title: "Matchday Highlights",
+    title: "BSV-Cup-Match",
     client: "VERVE Streetwear Tokyo",
     category: "Football Edits",
     platform: "TikTok",
@@ -136,16 +136,17 @@ export const PROJECTS_DATA: readonly Project[] = [
   },
   {
     id: "top-scorer-legacy",
-    title: "Top Scorer Legacy",
+    title: "Union 60 Vs. Neustadt",
     client: "UEFA Champions League",
     category: "Football Edits",
-    platform: "YouTube",
+    platform: "TikTok",
     views: "890K",
     year: "2025",
     duration: "00:52",
-    thumbnail:
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=800&q=80",
-    externalUrl: "https://www.youtube.com",
+    thumbnail: "/images/Standbild_Union_Neustadt.png",
+    videoEmbedUrl: "https://www.tiktok.com/player/v1/7688061900420156705",
+    externalUrl:
+      "https://www.tiktok.com/@haodg10/video/7688061900420156705?is_from_webapp=1&sender_device=pc",
     description:
       "Cineastischer Spieler-Fokus mit 3D-Kameratracking, VFX-Sparks und emotionalem Voiceover-Storytelling.",
   },
@@ -166,16 +167,17 @@ export const PROJECTS_DATA: readonly Project[] = [
   },
   {
     id: "street-to-stadium",
-    title: "Street to Stadium",
+    title: "HTB-Budenzauber-Cup",
     client: "Nike Football Campaign",
     category: "Football Edits",
     platform: "TikTok",
     views: "1.2M",
     year: "2024",
     duration: "00:40",
-    thumbnail:
-      "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=800&q=80",
-    externalUrl: "https://www.tiktok.com",
+    thumbnail: "/images/Standbild_Halle_Budenzauber.png",
+    videoEmbedUrl: "https://www.tiktok.com/player/v1/7321379056786689313",
+    externalUrl:
+      "https://www.tiktok.com/@haodg10/video/7321379056786689313?is_from_webapp=1&sender_device=pc",
     description:
       "Schnelle Urban-Cuts mit Beat-Sync, rotoskopierten Glow-Linien und Street-Football Ästhetik.",
   },
