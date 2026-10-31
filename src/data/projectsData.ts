@@ -106,9 +106,9 @@ export const PROJECTS_DATA: readonly Project[] = [
     id: "neural-genesis",
     title: "Neural Genesis 2099",
     client: "CyberArts Collective",
-    category: "AI Video Creation",
+    category: "VFX & Experiments",
     platform: "YouTube",
-    year: "2025",
+    year: "2020",
     duration: "01:45",
     thumbnail:
       "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1200&q=80",
