@@ -129,33 +129,36 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
         <CardPlayOverlay isDimmed={isLinkHovered} />
 
         {/* Bottom Metadata & Controls */}
-        <div className="relative z-10 p-5 sm:p-6 bg-gradient-to-t from-black via-black/85 to-transparent pt-24 pointer-events-none">
-          {/* Category & High-Contrast Duration Badge */}
-          <div className="flex items-center justify-between text-xs mb-2.5">
-            <span className="inline-flex items-center rounded-md bg-amber-500/15 border border-amber-500/30 px-2.5 py-1 text-[11px] font-bold text-amber-400 tracking-wider uppercase">
+        <div className="relative z-10 p-5 sm:p-6 bg-gradient-to-t from-black via-black/85 to-transparent pt-28 pointer-events-none">
+          {/* 1. Category Badge mit orange-goldener Umrandung */}
+          <div className="flex items-center mb-2.5">
+            <span className="inline-flex items-center rounded-md bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 text-[11px] font-bold text-amber-400 tracking-wider uppercase">
               {project.category}
-            </span>
-            <span className="inline-flex items-center rounded-md bg-black/85 backdrop-blur-md px-2.5 py-1 text-xs font-mono font-bold text-white border border-white/20 shadow-lg">
-              {project.duration}
             </span>
           </div>
 
-          <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
+          {/* 2. Title: Einzeilig & Fett */}
+          <h3
+            className="text-base sm:text-lg font-bold text-white leading-snug truncate drop-shadow-md"
+            title={project.title}
+          >
             {project.title}
           </h3>
 
-          {/* Views Counter Display */}
-          {project.views && (
-            <div className="mt-2.5 flex items-center">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-black/80 backdrop-blur-md px-2.5 py-1 text-[11px] font-semibold text-white border border-white/15 shadow-md">
-                <Eye className="h-3.5 w-3.5 text-white stroke-[2.2]" />
-                <span className="font-bold tracking-tight">{project.views}</span>
-              </span>
-            </div>
-          )}
+          {/* 3. Combined Views Counter & Action Link */}
+          <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs pointer-events-auto">
+            {project.views && (
+              <>
+                <span className="inline-flex items-center gap-1.5 text-zinc-300 font-medium select-none">
+                  <Eye className="h-3.5 w-3.5 text-zinc-400 stroke-[2.2]" />
+                  <span className="font-semibold tracking-tight">{project.views}</span>
+                </span>
+                <span className="text-zinc-600 select-none" aria-hidden="true">
+                  •
+                </span>
+              </>
+            )}
 
-          {/* Action Link: External Watch Button */}
-          <div className="mt-3 flex items-center pointer-events-auto">
             {project.externalUrl ? (
               <a
                 href={project.externalUrl}
@@ -164,7 +167,7 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
                 onClick={(e) => e.stopPropagation()}
                 onMouseEnter={() => setIsLinkHovered(true)}
                 onMouseLeave={() => setIsLinkHovered(false)}
-                className="inline-flex items-center text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors group/link cursor-pointer py-1.5 px-2 -mx-2 rounded-lg"
+                className="inline-flex items-center font-semibold text-amber-400 hover:text-amber-300 transition-colors group/link cursor-pointer py-0.5"
                 aria-label={`${project.title} - ${actionLinkLabel} (externer Link)`}
               >
                 <span className="pointer-events-none">{actionLinkLabel}</span>
@@ -174,7 +177,7 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
               <span
                 onMouseEnter={() => setIsLinkHovered(true)}
                 onMouseLeave={() => setIsLinkHovered(false)}
-                className="inline-flex items-center text-xs font-semibold text-amber-400 group-hover:translate-x-1 transition-transform py-1.5 px-2 -mx-2"
+                className="inline-flex items-center font-semibold text-amber-400 group-hover:translate-x-1 transition-transform py-0.5"
               >
                 <span className="pointer-events-none">{actionLinkLabel}</span>
                 <ArrowUpRight className="pointer-events-none ml-1 h-3.5 w-3.5" />
@@ -251,7 +254,7 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
             <span className="font-mono text-zinc-500">{project.year}</span>
           </div>
 
-          <h3 className="text-xl font-bold text-white">
+          <h3 className="text-xl font-bold text-white truncate" title={project.title}>
             {project.title}
           </h3>
 
