@@ -213,15 +213,15 @@ export const PROJECTS_DATA: readonly Project[] = [
   },
   {
     id: "morphing-dimensions",
-    title: "Morphing Dimensions",
+    title: "ABC-Song",
     client: "Sonar Music Festival",
     category: "AI Video Creation",
     platform: "YouTube",
-    year: "2025",
+    year: "2026",
     duration: "02:10",
-    thumbnail:
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80",
-    externalUrl: "https://www.youtube.com",
+    thumbnail: "https://img.youtube.com/vi/k_EJ3AXGLfQ/hqdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/k_EJ3AXGLfQ?autoplay=1&rel=0",
+    externalUrl: "https://youtu.be/k_EJ3AXGLfQ?si=44prARQvAWNgnNwb",
     description:
       "Hypnotische audiovisuelle Experience mit generativen 3D-Fraktalen, Audio-Reactivity und surrealen Raumtransformationen.",
   },
