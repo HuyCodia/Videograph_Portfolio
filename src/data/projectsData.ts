@@ -6,8 +6,8 @@ export const PROJECTS_DATA: readonly Project[] = [
   // Row 1: 4 Vertical cards (max 4 in a row)
   // Row 2: 3 Horizontal YouTube cards (max 3 in a row, consistent with Cinematic Videos)
   // Row 3: 4 Vertical cards (max 4 in a row)
-  // Row 4: 3 Horizontal YouTube cards (max 3 in a row)
-  // Row 5: 2 Horizontal YouTube cards (max 3 in a row)
+  // Row 4: 2 Horizontal YouTube cards (max 3 in a row)
+  // Row 5: 1 Horizontal YouTube card (max 3 in a row)
 
   // --- Row 1: 4 Vertical Cards (Col 1 to 4) ---
   {
@@ -182,21 +182,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Schnelle Urban-Cuts mit Beat-Sync, rotoskopierten Glow-Linien und Street-Football Ästhetik.",
   },
 
-  // --- Row 4: 3 Horizontal Cards (Col 1 to 3, max 3 in a row) ---
-  {
-    id: "artisans-of-florence",
-    title: "The Artisans of Florence",
-    client: "European Heritage Trust",
-    category: "Cinematic Videos",
-    platform: "YouTube",
-    year: "2024",
-    duration: "18:20",
-    thumbnail:
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80",
-    externalUrl: "https://www.youtube.com",
-    description:
-      "Ein intimer Blick in historische Werkstätten toskanischer Leder- und Goldschmiede. Ausgezeichnet beim Indie Cinefest.",
-  },
+  // --- Row 4: 2 Horizontal Cards (Col 1 & 2, max 3 in a row) ---
   {
     id: "cyber-pulse-vfx",
     title: "Cyber Pulse VFX",
@@ -226,21 +212,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Hypnotische audiovisuelle Experience mit generativen 3D-Fraktalen, Audio-Reactivity und surrealen Raumtransformationen.",
   },
 
-  // --- Row 5: 2 Horizontal Cards (Col 1 & 2, max 3 in a row) ---
-  {
-    id: "astral-drift-vfx",
-    title: "Astral Drift CGI",
-    client: "Hyperion Sci-Fi Studio",
-    category: "VFX & Experiments",
-    platform: "YouTube",
-    year: "2024",
-    duration: "01:50",
-    thumbnail:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1200&q=80",
-    externalUrl: "https://www.youtube.com",
-    description:
-      "Surreale prozedurale Partikelsimulationen, volumetrisches Licht und Unreal Engine 5 Real-Time Rendering.",
-  },
+  // --- Row 5: 1 Horizontal Card (max 3 in a row) ---
   {
     id: "digital-human-lore",
     title: "Avatars & Echoes",
