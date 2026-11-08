@@ -155,13 +155,15 @@ export const PROJECTS_DATA: readonly Project[] = [
     title: "Sonic Horizon Audio",
     client: "KRONOS Tech Global",
     category: "Short-Form Content",
-    platform: "Instagram",
+    platform: "TikTok",
     views: "720K",
     year: "2024",
     duration: "00:22",
     thumbnail:
       "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=800&q=80",
-    externalUrl: "https://www.instagram.com",
+    videoEmbedUrl: "https://www.tiktok.com/player/v1/7363268395485203745",
+    externalUrl:
+      "https://www.tiktok.com/@haodg10/video/7363268395485203745?is_from_webapp=1&sender_device=pc",
     description:
       "Schneller 9:16 Tech-Teaser mit Macro-Shots, Sound-FX und nahtlosen Seamless Zoom-Transitions.",
   },
