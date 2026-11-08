@@ -75,8 +75,8 @@ export const PROJECTS_DATA: readonly Project[] = [
 
   // --- Row 2: 3 Horizontal Cards (Col 1 to 3, max 3 in a row) ---
   {
-    id: "photo-colorgrading",
-    title: "Photo Colorgrading 2",
+    id: "the-flash",
+    title: "The Flash",
     client: "Creative Post-Production",
     category: "VFX & Experiments",
     platform: "YouTube",
