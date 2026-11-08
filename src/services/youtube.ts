@@ -12,6 +12,7 @@ export interface YouTubeVideoStats {
   readonly viewCount: string
   readonly rawViewCount: number
   readonly likeCount?: string
+  readonly duration?: string
 }
 
 export interface YouTubeStatsCache {
@@ -19,7 +20,7 @@ export interface YouTubeStatsCache {
   readonly data: Record<string, YouTubeVideoStats>
 }
 
-export const YOUTUBE_CACHE_KEY = 'videograph_yt_stats_v1'
+export const YOUTUBE_CACHE_KEY = 'videograph_yt_stats_v2'
 export const YOUTUBE_CACHE_TTL_MS = 24 * 60 * 60 * 1000 // 24 hours
 
 /**
@@ -68,6 +69,29 @@ export function formatViewCount(count: number): string {
   }
 
   return count.toLocaleString('de-DE')
+}
+
+/**
+ * Formats an ISO 8601 duration string from YouTube (e.g. PT1M45S, PT30S, PT1H2M3S)
+ * into standard human-readable format MM:SS or HH:MM:SS.
+ */
+export function formatYouTubeDuration(isoDuration?: string): string | null {
+  if (!isoDuration || typeof isoDuration !== 'string') return null
+
+  const match = isoDuration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/)
+  if (!match) return null
+
+  const hours = match[1] ? Number.parseInt(match[1], 10) : 0
+  const minutes = match[2] ? Number.parseInt(match[2], 10) : 0
+  const seconds = match[3] ? Number.parseInt(match[3], 10) : 0
+
+  const pad = (num: number) => num.toString().padStart(2, '0')
+
+  if (hours > 0) {
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+  }
+
+  return `${pad(minutes)}:${pad(seconds)}`
 }
 
 /**
@@ -124,7 +148,7 @@ export async function fetchYouTubeStats(
   }
 
   try {
-    const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${uniqueIds.join(',')}&key=${apiKey}`
+    const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${uniqueIds.join(',')}&key=${apiKey}`
     const response = await fetch(endpoint)
 
     if (!response.ok) {
@@ -143,11 +167,13 @@ export async function fetchYouTubeStats(
       const id = item.id as string
       const rawViews = Number(item.statistics?.viewCount ?? 0)
       const rawLikes = Number(item.statistics?.likeCount ?? 0)
+      const parsedDuration = formatYouTubeDuration(item.contentDetails?.duration)
 
       statsMap[id] = {
         viewCount: formatViewCount(rawViews),
         rawViewCount: rawViews,
         likeCount: item.statistics?.likeCount ? formatViewCount(rawLikes) : undefined,
+        duration: parsedDuration ?? undefined,
       }
     }
 

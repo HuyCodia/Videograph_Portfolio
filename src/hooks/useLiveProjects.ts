@@ -20,10 +20,12 @@ function applyStatsToProjects(
       extractYouTubeId(project.externalUrl) ||
       extractYouTubeId(project.videoUrl)
 
-    if (ytId && stats[ytId]?.viewCount) {
+    if (ytId && stats[ytId]) {
+      const live = stats[ytId]
       return {
         ...project,
-        views: stats[ytId].viewCount,
+        views: live.viewCount || project.views,
+        duration: live.duration || project.duration,
       }
     }
 
