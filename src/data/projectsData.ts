@@ -23,7 +23,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.instagram.com/reel/CHxslxsClrx/?utm_source=ig_web_copy_link&srtk=MzRlODBiNWFlZA==",
     description:
-      "Hochenergetischer Matchday Edit mit Speed-Ramping, Sound-Design und nahtlosen Match-Cuts direkt aus dem Stadion.",
+      "Atmospheric color grading breakdown featuring a before-and-after comparison of an autumnal outdoor lake photoshoot.",
   },
   {
     id: "instagram-story-edit",
@@ -38,7 +38,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     videoEmbedUrl: "https://www.youtube.com/embed/BYxFj-YJCa8?autoplay=1&rel=0",
     externalUrl: "https://youtube.com/shorts/BYxFj-YJCa8?si=ZEX6fdwK9y6Kvlst",
     description:
-      "Vertikales 9:16 Reel mit dynamischem Car-Rig, rasantem Pacing und trendsetzendem Color Grading für Social Media.",
+      "Dynamic social media story edit featuring rhythmic pacing, kinetic typography, and bespoke sound design.",
   },
   {
     id: "el-clasico-thrill",
@@ -54,7 +54,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.tiktok.com/@haodg10/video/7312061119777017121?is_from_webapp=1&sender_device=pc",
     description:
-      "Dramatischer Matchday-Teaser mit synchronisierten Bass-Drops, Glitch-Transitions und dynamischem Player-Tracking.",
+      "High-octane indoor football edit from the Nordfrost-Cup in Wilhelmshaven, packed with rapid match-cuts, bass drops, and clutch goals.",
   },
   {
     id: "bsv-cup-match",
@@ -70,7 +70,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.tiktok.com/@haodg10/video/7372165811261246753?is_from_webapp=1&sender_device=pc",
     description:
-      "Trend-orientiertes Fashion Reel mit Match-Cuts, Typografie-Overlays und viraler Sound-Synchronisation.",
+      "High-energy match recap of Blumenthal vs. Weyhe at the BSV-Cup featuring tight beat-syncs and intense on-pitch duels.",
   },
 
   // --- Row 2: 3 Horizontal Cards (Col 1 to 3, max 3 in a row) ---
@@ -86,7 +86,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     videoEmbedUrl: "https://www.youtube.com/embed/0X4VN9Vov3k?autoplay=1&rel=0",
     externalUrl: "https://youtu.be/0X4VN9Vov3k?si=eTrD8AYnn5dppPRO",
     description:
-      "Detailliertes Color Grading Breakdown und Post-Processing Workflow in DaVinci Resolve.",
+      "Cinematic color grading and look development in DaVinci Resolve demonstrated on a dramatic Flash-inspired portrait.",
   },
   {
     id: "hausmessung-mit-ju",
@@ -100,7 +100,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     videoEmbedUrl: "https://www.youtube.com/embed/NCyABqp1da8?autoplay=1&rel=0",
     externalUrl: "https://youtu.be/NCyABqp1da8?si=2QZKJ67AOu_XhVS4",
     description:
-      "Eine atemberaubende Winterexpedition in den Weiten Skandinaviens. Gedreht auf Sony FX9 in 4K DCI mit Vintage Cinema Glass.",
+      "Entertaining comedy and lifestyle vlog exploring house surveying with Ju — driven by witty storytelling, fast-paced comedic timing, and situational humor.",
   },
   {
     id: "text-animation",
@@ -114,7 +114,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     videoEmbedUrl: "https://www.youtube.com/embed/wa6TPCOxA3M?autoplay=1&rel=0",
     externalUrl: "https://youtu.be/wa6TPCOxA3M?si=vrLKOMb35NZHLRq9",
     description:
-      "Cineastischer Sci-Fi Teaser mit Diffusionsmodellen generiert, durch Runway Gen-3 animiert und mit Dolby 5.1 Sound veredelt.",
+      "Creative motion graphics and kinetic typography animation featuring seamless transitions, kinetic text design, and audio synchronization.",
   },
 
   // --- Row 3: 4 Vertical Cards (Col 1 to 4) ---
@@ -132,7 +132,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.instagram.com/reel/CHNo0AwC-t0/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
     description:
-      "Hochenergetisches Fitness Reel mit Hard-Cuts, Bass-Pumping Sound-Design und düsterer Cinematic-Ausleuchtung.",
+      "Summer backyard football reel showcasing vibrant color grading, slow-motion trick shots, and dynamic ball tracking.",
   },
   {
     id: "union-60-vs-neustadt",
@@ -148,24 +148,23 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.tiktok.com/@haodg10/video/7688061900420156705?is_from_webapp=1&sender_device=pc",
     description:
-      "Cineastischer Spieler-Fokus mit 3D-Kameratracking, VFX-Sparks und emotionalem Voiceover-Storytelling.",
+      "Intense matchday showcase capturing the rivalry between Union 60 and Neustadt with dramatic match-cuts and raw emotion.",
   },
   {
-    id: "sonic-horizon-audio",
-    title: "Sonic Horizon Audio",
+    id: "braunschweig-vs-weyhe",
+    title: "Braunschweig Vs. Weyhe",
     client: "KRONOS Tech Global",
     category: "Short-Form Content",
     platform: "TikTok",
     views: "720K",
     year: "2024",
     duration: "00:22",
-    thumbnail:
-      "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=800&q=80",
+    thumbnail: "/images/Standbild_Braunschweig_Weyhe.png",
     videoEmbedUrl: "https://www.tiktok.com/player/v1/7363268395485203745",
     externalUrl:
       "https://www.tiktok.com/@haodg10/video/7363268395485203745?is_from_webapp=1&sender_device=pc",
     description:
-      "Schneller 9:16 Tech-Teaser mit Macro-Shots, Sound-FX und nahtlosen Seamless Zoom-Transitions.",
+      "Fast-paced match edit of Braunschweig vs. Weyhe featuring dynamic speed-ramping, hard-hitting tackles, and punchy audio.",
   },
   {
     id: "htb-budenzauber-cup",
@@ -181,7 +180,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     externalUrl:
       "https://www.tiktok.com/@haodg10/video/7321379056786689313?is_from_webapp=1&sender_device=pc",
     description:
-      "Schnelle Urban-Cuts mit Beat-Sync, rotoskopierten Glow-Linien und Street-Football Ästhetik.",
+      "Pure indoor football action at the HTB-Budenzauber tournament with lightning-fast transitions, goals, and driving beat synchronization.",
   },
 
   // --- Row 4: 2 Horizontal Cards (Col 1 & 2, max 3 in a row) ---
@@ -197,7 +196,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
     externalUrl: "https://www.youtube.com",
     description:
-      "Experimentelle Visual Effects, 3D-Compositing in Blender & After Effects sowie holografische HUD-Overlays.",
+      "Experimental visual effects, 3D compositing in Blender & After Effects, and futuristic holographic HUD overlays.",
   },
   {
     id: "abc-song",
@@ -211,7 +210,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     videoEmbedUrl: "https://www.youtube.com/embed/k_EJ3AXGLfQ?autoplay=1&rel=0",
     externalUrl: "https://youtu.be/k_EJ3AXGLfQ?si=44prARQvAWNgnNwb",
     description:
-      "Hypnotische audiovisuelle Experience mit generativen 3D-Fraktalen, Audio-Reactivity und surrealen Raumtransformationen.",
+      "Vibrant AI-generated ABC song video featuring playful animations, kid-friendly visual aesthetics, and a catchy musical flow.",
   },
 
   // --- Row 5: 1 Horizontal Card (max 3 in a row) ---
@@ -227,6 +226,6 @@ export const PROJECTS_DATA: readonly Project[] = [
       "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?auto=format&fit=crop&w=1200&q=80",
     externalUrl: "https://www.youtube.com",
     description:
-      "Fotorealistische digitale Avatare und Neural Rendering kombiniert mit High-End Motion Capture Daten.",
+      "Photorealistic digital avatars and neural rendering combined with high-end motion capture performance data.",
   },
 ] as const;
