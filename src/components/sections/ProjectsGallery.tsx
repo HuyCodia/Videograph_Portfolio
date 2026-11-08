@@ -6,12 +6,16 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 
 interface ProjectsGalleryProps {
+  projects?: readonly Project[]
   onSelectProject: (project: Project) => void
 }
 
-export function ProjectsGallery({ onSelectProject }: ProjectsGalleryProps) {
+export function ProjectsGallery({
+  projects = PROJECTS_DATA,
+  onSelectProject,
+}: ProjectsGalleryProps) {
   const { selectedCategory, setSelectedCategory, categories, filteredProjects } =
-    useProjectFilter(PROJECTS_DATA)
+    useProjectFilter(projects)
 
   // Mixed categories (All, Comedy & Entertainment) support both 9:16 and 16:9 cards seamlessly in a 12-col grid
   const isMixedCategory = selectedCategory === 'All' || selectedCategory === 'Comedy & Entertainment'

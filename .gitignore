@@ -27,6 +27,7 @@ dist-ssr
 test_*.jpg
 .env
 .env.*
+!.env.example
 
 # Large media files (exceeding Git/GitHub recommended limits)
 public/videos/*.mp4

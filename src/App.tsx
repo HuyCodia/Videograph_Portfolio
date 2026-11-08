@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type { Project } from '@/types/project'
+import { PROJECTS_DATA } from '@/data/projectsData'
+import { useLiveProjects } from '@/hooks/useLiveProjects'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { HeroSection } from '@/components/sections/HeroSection'
@@ -11,6 +13,7 @@ import { VideoPreviewModal } from '@/components/sections/VideoPreviewModal'
 
 export default function App() {
   const [activeProject, setActiveProject] = useState<Project | null>(null)
+  const projects = useLiveProjects(PROJECTS_DATA)
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
@@ -18,7 +21,7 @@ export default function App() {
 
       <main className="flex-1">
         <HeroSection />
-        <ProjectsGallery onSelectProject={setActiveProject} />
+        <ProjectsGallery projects={projects} onSelectProject={setActiveProject} />
         <SkillsSection />
         <AboutSection />
         <ContactSection />
