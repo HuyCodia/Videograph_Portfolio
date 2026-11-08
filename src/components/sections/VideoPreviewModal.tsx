@@ -58,7 +58,7 @@ export function VideoPreviewModal({ project, onClose }: VideoPreviewModalProps) 
       title={project?.title}
       subtitle={
         project
-          ? `${project.client} • ${project.category} (${project.year})${
+          ? `${project.client ? `${project.client} • ` : ''}${project.category} (${project.year})${
               project.views ? ` • 👁 ${project.views} Views` : ''
             }`
           : undefined

@@ -258,7 +258,9 @@ export function ProjectCard({ project, onSelect, className }: ProjectCardProps) 
             {project.title}
           </h3>
 
-          <p className="text-sm text-zinc-400 mt-1.5">{project.client}</p>
+          {project.client && (
+            <p className="text-sm text-zinc-400 mt-1.5">{project.client}</p>
+          )}
 
           {project.description && (
             <p className="text-xs text-zinc-500 mt-3 line-clamp-2 leading-relaxed">

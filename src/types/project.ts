@@ -38,7 +38,7 @@ export type SocialPlatform =
 export interface Project {
   readonly id: string
   readonly title: string
-  readonly client: string
+  readonly client?: string
   readonly category: ProjectCategory
   readonly platform?: SocialPlatform
   readonly views?: string
