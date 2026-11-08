@@ -11,12 +11,12 @@ export const PROJECTS_DATA: readonly Project[] = [
 
   // --- Row 1: 4 Vertical Cards (Col 1 to 4) ---
   {
-    id: "matchday-intensity",
-    title: "Photo Colorgrading",
+    id: "photo-colorgrading-1",
+    title: "Photo Colorgrading 1",
     client: "FC Bayern / Football Creator",
     category: "Short-Form Content",
     platform: "Instagram",
-    views: "2.4M",
+    views: "297",
     year: "2020",
     duration: "00:45",
     thumbnail: "/images/Standbild_Hassel_See.png",
@@ -26,12 +26,12 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Hochenergetischer Matchday Edit mit Speed-Ramping, Sound-Design und nahtlosen Match-Cuts direkt aus dem Stadion.",
   },
   {
-    id: "neon-velocity",
+    id: "instagram-story-edit",
     title: "Instagram Story Edit",
     client: "Porsche Club Central",
     category: "Short-Form Content",
     platform: "Shorts",
-    views: "3.1M",
+    views: "188",
     year: "2019",
     duration: "00:30",
     thumbnail: "/images/Standbild_Instastory.png",
@@ -46,7 +46,7 @@ export const PROJECTS_DATA: readonly Project[] = [
     client: "La Liga / EA Sports FC",
     category: "Football Edits",
     platform: "TikTok",
-    views: "1.8M",
+    views: "314K",
     year: "2025",
     duration: "00:38",
     thumbnail: "/images/Standbild_Halle_Wilhelmshaven.png",
@@ -57,12 +57,12 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Dramatischer Matchday-Teaser mit synchronisierten Bass-Drops, Glitch-Transitions und dynamischem Player-Tracking.",
   },
   {
-    id: "urban-minimal-drop",
+    id: "bsv-cup-match",
     title: "BSV-Cup-Match",
     client: "VERVE Streetwear Tokyo",
     category: "Football Edits",
     platform: "TikTok",
-    views: "950K",
+    views: "1.2M",
     year: "2024",
     duration: "00:24",
     thumbnail: "/images/Standbild_Blumenthal_Weyhe.png",
@@ -76,7 +76,7 @@ export const PROJECTS_DATA: readonly Project[] = [
   // --- Row 2: 3 Horizontal Cards (Col 1 to 3, max 3 in a row) ---
   {
     id: "photo-colorgrading",
-    title: "The Flash Effect",
+    title: "Photo Colorgrading 2",
     client: "Creative Post-Production",
     category: "VFX & Experiments",
     platform: "YouTube",
@@ -89,7 +89,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Detailliertes Color Grading Breakdown und Post-Processing Workflow in DaVinci Resolve.",
   },
   {
-    id: "echoes-of-the-north",
+    id: "hausmessung-mit-ju",
     title: "Hausmessung mit Ju",
     client: "Nordic Tourism & Gear",
     category: "Comedy & Entertainment",
@@ -103,8 +103,8 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Eine atemberaubende Winterexpedition in den Weiten Skandinaviens. Gedreht auf Sony FX9 in 4K DCI mit Vintage Cinema Glass.",
   },
   {
-    id: "neural-genesis",
-    title: "Neural Genesis 2099",
+    id: "text-animation",
+    title: "Text Animation",
     client: "CyberArts Collective",
     category: "VFX & Experiments",
     platform: "YouTube",
@@ -119,7 +119,7 @@ export const PROJECTS_DATA: readonly Project[] = [
 
   // --- Row 3: 4 Vertical Cards (Col 1 to 4) ---
   {
-    id: "limitless-grind",
+    id: "photo-colorgrading-2",
     title: "Photo Colorgrading 2",
     client: "APEX Gym & Performance",
     category: "Short-Form Content",
@@ -135,7 +135,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Hochenergetisches Fitness Reel mit Hard-Cuts, Bass-Pumping Sound-Design und düsterer Cinematic-Ausleuchtung.",
   },
   {
-    id: "top-scorer-legacy",
+    id: "union-60-vs-neustadt",
     title: "Union 60 Vs. Neustadt",
     client: "UEFA Champions League",
     category: "Football Edits",
@@ -166,7 +166,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Schneller 9:16 Tech-Teaser mit Macro-Shots, Sound-FX und nahtlosen Seamless Zoom-Transitions.",
   },
   {
-    id: "street-to-stadium",
+    id: "htb-budenzauber-cup",
     title: "HTB-Budenzauber-Cup",
     client: "Nike Football Campaign",
     category: "Football Edits",
@@ -212,7 +212,7 @@ export const PROJECTS_DATA: readonly Project[] = [
       "Experimentelle Visual Effects, 3D-Compositing in Blender & After Effects sowie holografische HUD-Overlays.",
   },
   {
-    id: "morphing-dimensions",
+    id: "abc-song",
     title: "ABC-Song",
     client: "Sonar Music Festival",
     category: "AI Video Creation",
