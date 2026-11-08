@@ -65,7 +65,7 @@ export function useLiveProjects(initialProjects: readonly Project[]): Project[] 
     if (cached) {
       const hasAllVideos = videoIdMap.every((entry) => Boolean(cached[entry.ytId]))
       if (hasAllVideos) {
-        // Cache is active and complete: 0 API calls needed
+        console.log('📦 [YouTube Cache] Aufrufzahlen aus 24h-LocalStorage aktiv (0 API-Quota verbraucht):', cached)
         return
       }
     }
@@ -76,6 +76,7 @@ export function useLiveProjects(initialProjects: readonly Project[]): Project[] 
     fetchYouTubeStats(allVideoIds).then((freshStats) => {
       if (!freshStats) return
 
+      console.log('🔴 [YouTube API] Frische Live-Views von Google geladen:', freshStats)
       setProjects((currentProjects) => applyStatsToProjects(currentProjects, freshStats))
     })
   }, [initialProjects])
